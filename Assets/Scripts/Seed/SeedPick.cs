@@ -1,18 +1,15 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SeedPick : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ScriptableObject scriptableObject;
 
-    // Update is called once per frame
-    void Update()
+    public void Pick()
     {
         
+        //InventorySystem.current.Add(scriptableObject);
+        Destroy(gameObject);
     }
 }

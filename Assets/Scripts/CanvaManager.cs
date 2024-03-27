@@ -2,15 +2,15 @@
 
 public class CanvaManager : MonoBehaviour
 {
-    public void EtatCanva(GameObject _gameObject)
+    public void EtatCanva(GameObject gameObject)
     {
-        if (_gameObject.activeSelf)
+        if (gameObject.activeSelf)
         {
-            _gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
         else
         {
-            _gameObject.SetActive(true);
+            gameObject.SetActive(true);
         }
     }
 }

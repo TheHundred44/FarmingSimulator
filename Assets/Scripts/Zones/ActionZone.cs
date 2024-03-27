@@ -11,12 +11,15 @@ public class ActionZone : MonoBehaviour
     private GameObject _canvaZone;
     [SerializeField]
     private GameObject TextToInteract;
+    [SerializeField]
+    private MouseLook _mouseLook;
 
     public bool IsIn = false;
 
     private void Awake()
     {
         _inputActions = new InputMaster();
+        _mouseLook = FindAnyObjectByType<MouseLook>();
     }
     private void OnEnable()
     {
@@ -44,6 +47,7 @@ public class ActionZone : MonoBehaviour
             IsIn = false;
             TextToInteract.SetActive(false);
             _canvaZone.SetActive(false);
+            _mouseLook.OnEnable();
         }
     }
 
@@ -53,11 +57,13 @@ public class ActionZone : MonoBehaviour
         {
             TextToInteract.SetActive(false);
             _canvaZone.SetActive(true);
+            _mouseLook.OnDisable();
         }
         else
         {
             TextToInteract.SetActive(true);
             _canvaZone.SetActive(false);
+            _mouseLook.OnEnable();
         }
     }
 }

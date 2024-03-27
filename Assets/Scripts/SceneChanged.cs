@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanged : MonoBehaviour
 {
-    public void SceneSwitch(string _NameOfScene)
+    public void SceneSwitch(string NameOfScene)
     {
-        SceneManager.LoadScene(_NameOfScene);
+        SceneManager.LoadScene(NameOfScene);
     }
 
     public void Quit()

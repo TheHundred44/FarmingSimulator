@@ -6,26 +6,38 @@ public class Garden : ActionZone
 {
     public bool IsPlant;
 
-    public GameObject PlantMenu;
-    public GameObject ObservationMenu;
+    [SerializeField]
+    private GameObject _plantMenu;
+    [SerializeField]
+    private GameObject _observationMenu;
+    [SerializeField]
+    private GameObject _harvestMenu;
+
+    private SeedMain _seedMain;
 
     public void ActiveMenu()
     {
         if (IsPlant)
         {
-            ObservationMenu.SetActive(true);
+            _observationMenu.SetActive(true);
         }
         else
         {
-            PlantMenu.SetActive(true);
+            _plantMenu.SetActive(true);
+        }
+
+        if (_seedMain.IsGrown)
+        {
+            _harvestMenu.SetActive(true);
         }
     }
 
     public override void OnTriggerExit(Collider other)
     {
         base.OnTriggerExit(other);
-        ObservationMenu.SetActive(false);
-        PlantMenu.SetActive(false);
+        _observationMenu.SetActive(false);
+        _plantMenu.SetActive(false);
+        _harvestMenu.SetActive(false);
     }
 
     public override void Interact()

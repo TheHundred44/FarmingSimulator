@@ -18,6 +18,7 @@ public class MouseLook : MonoBehaviour
 
         _inputActions = new InputMaster();
         Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     private void Update()
@@ -39,13 +40,15 @@ public class MouseLook : MonoBehaviour
         _playerBody.Rotate(Vector3.up * mouseX);
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
         _inputActions.Enable();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         _inputActions.Disable();
+        Cursor.lockState = CursorLockMode.None;
     }
 }
