@@ -26,10 +26,14 @@ public class Garden : ActionZone
             _plantMenu.SetActive(true);
         }
 
-        if (_seedMain.IsGrown)
+        if(_seedMain!= null)
         {
-            _harvestMenu.SetActive(true);
+            if (_seedMain.IsGrown)
+            {
+                _harvestMenu.SetActive(true);
+            }
         }
+        
     }
 
     public override void OnTriggerExit(Collider other)

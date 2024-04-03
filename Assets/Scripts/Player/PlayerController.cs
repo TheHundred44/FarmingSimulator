@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
 
     private List<ActionZone> _actionZone;
 
+    [SerializeField] private GameObject _canvaInventory;
+    [SerializeField] private GameObject _canvaOptions;
+
     private void Awake()
     {
         _inputActions = new InputMaster();
@@ -64,6 +67,28 @@ public class PlayerController : MonoBehaviour
         foreach (ActionZone zone in foundActionZones)
         {
             _actionZone.Add(zone);
+        }
+    }
+
+    private void OnInventory()
+    {
+        UseCanva(_canvaInventory);
+    }
+
+    private void OnOptions()
+    {
+        UseCanva(_canvaOptions);
+    }
+
+    private void UseCanva(GameObject gameObject)
+    {
+        if (_canvaInventory.activeSelf)
+        {
+            _canvaInventory.SetActive(false);
+        }
+        else
+        {
+            _canvaInventory.SetActive(true);
         }
     }
 }

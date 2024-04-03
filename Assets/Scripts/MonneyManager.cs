@@ -28,7 +28,7 @@ public class MonneyManager : MonoBehaviour
 
     public SeedBusiness _seedBusiness;
 
-    private void Start()
+    private void Awake()
     {
         RefreshMoney();
         _seedBusiness.OnPrice += RefreshMoney;

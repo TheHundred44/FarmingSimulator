@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class SeedBusiness : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class SeedBusiness : MonoBehaviour
     private MonneyManager _monneyManager;
 
     public event Action OnPrice;
+    public event Action OnTextNbOfSeed;
+
+    public GameObject InventorySlot1;
+    private Sprite SpriteSlot1;
+    private SeedInventory _seedOfInventory;
 
     private void Start()
     {
@@ -22,17 +28,23 @@ public class SeedBusiness : MonoBehaviour
     {
         _monneyManager._seedBusiness = this.GetComponent<SeedBusiness>();
         _monneyManager.Monney -= _seed.PriceToBuy;
-        if(_monneyManager.Monney <= 0)
+
+        if (_monneyManager.Monney <= 0)
         {
             _monneyManager.Monney = 0;
             Debug.Log("Pas assez d'argent");
         }
         else
         {
-            //Ajoute la seed dans l'inventaire
+            SpriteSlot1 = InventorySlot1.GetComponent<Sprite>();
+            SpriteSlot1 = _seed.Sprite;
+            _seedOfInventory = InventorySlot1.GetComponent<SeedInventory>();
+            _seedOfInventory.SeedScriptableObject = _seed;
+            _seedOfInventory.NbOfSeed += 1;
         }
+
         OnPrice?.Invoke();
-        
+        OnTextNbOfSeed?.Invoke();
     }
 
     public void Sell(float price)
@@ -46,7 +58,5 @@ public class SeedBusiness : MonoBehaviour
         //else{
         //  Debug.Log("Pas de graine de ce type");
         //}
-
-
     }
 }
