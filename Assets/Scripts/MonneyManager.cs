@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class MonneyManager : MonoBehaviour
@@ -26,16 +24,19 @@ public class MonneyManager : MonoBehaviour
     [SerializeField]
     private TMP_Text _textMonney;
 
-    public SeedBusiness _seedBusiness;
+    public SeedBusiness SeedBusiness;
 
     private void Awake()
     {
         RefreshMoney();
-        _seedBusiness.OnPrice += RefreshMoney;
+        SeedBusiness.OnPrice += RefreshMoney;
     }
 
-    public void RefreshMoney()
+    /// <summary>
+    /// Update the text of the game monney.
+    /// </summary>
+    private void RefreshMoney()
     {
-        _textMonney.text = "" + Monney;
+        _textMonney.text = " " + Monney;
     }
 }

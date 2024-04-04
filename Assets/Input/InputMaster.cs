@@ -165,7 +165,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ec5610b4-f9c4-41fa-96af-699c170fb99e"",
-                    ""path"": ""<Keyboard>/o"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

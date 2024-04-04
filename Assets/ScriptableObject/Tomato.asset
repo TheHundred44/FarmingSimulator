@@ -17,5 +17,5 @@ MonoBehaviour:
   PriceToBuy: 5
   PriceToSell: 10
   Sprite: {fileID: 0}
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 3074849000501198065, guid: c4f38759821bc1941ba0641cd86606af, type: 3}
   IsGrown: 0

@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
+using System.Threading.Tasks;
 
 public class SeedGrown : MonoBehaviour
 {
@@ -12,19 +11,34 @@ public class SeedGrown : MonoBehaviour
     private TMP_Text _remainingTimeText;
     private float _remainingTime;
 
-    private void Start()
+    private int minutes;
+    private int seconds;
+
+    private void Awake()
     {
         _seedMain = GetComponent<SeedMain>();
         _timeOfGrown = _seedMain.SeedScriptableObject.TimeOfGrown;
+        _remainingTime = _timeOfGrown;
     }
 
-    public void Grown()
+    /// <summary>
+    /// Allows the seed to grow into a plant, while showing the player a timer so he knows how much time is left to grow.
+    /// </summary>
+    public async void Grown()
     {
-        for(float i = 0; i < _timeOfGrown; i += Time.deltaTime)
+        _remainingTime = _timeOfGrown;
+        _remainingTimeText = GameObject.Find("TextTimeRemaining").GetComponent<TMP_Text>();
+
+        for (float i = 0; i < _timeOfGrown; i += Time.deltaTime)
         {
+            minutes = (int)(_remainingTime / 60);
+            seconds = (int)(_remainingTime % 60);
             _remainingTime -= Time.deltaTime;
-            _remainingTimeText.text = "" + _remainingTime;
+            _remainingTimeText.text = " " + minutes.ToString("00") + " : " + seconds.ToString("00");
+            await Task.Delay(1);
         }
+
         _seedMain.IsGrown = true;
+        _seedMain.SeedPlant.Garden.ActiveMenu();
     }
 }

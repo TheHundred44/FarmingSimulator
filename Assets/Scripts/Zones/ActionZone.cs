@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 
 public class ActionZone : MonoBehaviour
 {
@@ -21,36 +18,10 @@ public class ActionZone : MonoBehaviour
         _inputActions = new InputMaster();
         _mouseLook = FindAnyObjectByType<MouseLook>();
     }
-    private void OnEnable()
-    {
-        _inputActions.Enable();
-    }
 
-    private void OnDisable()
-    {
-        _inputActions.Disable();
-    }
-
-    public virtual void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player")
-        {
-            IsIn = true;
-            TextToInteract.SetActive(true);
-        }
-    }
-
-    public virtual void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            IsIn = false;
-            TextToInteract.SetActive(false);
-            _canvaZone.SetActive(false);
-            _mouseLook.OnEnable();
-        }
-    }
-
+    /// <summary>
+    /// Opens the menu and removes displayed text, and vice versa. 
+    /// </summary>
     public virtual void Interact()
     {
         if (TextToInteract.activeSelf)
@@ -62,6 +33,50 @@ public class ActionZone : MonoBehaviour
         else
         {
             TextToInteract.SetActive(true);
+            _canvaZone.SetActive(false);
+            _mouseLook.OnEnable();
+        }
+    }
+
+    /// <summary>
+    /// Activates the inputs.
+    /// </summary>
+    private void OnEnable()
+    {
+        _inputActions.Enable();
+    }
+
+    /// <summary>
+    /// Disables the inputs.
+    /// </summary>
+    private void OnDisable()
+    {
+        _inputActions.Disable();
+    }
+
+    /// <summary>
+    /// Checks that when a player enters the zone, a text is displayed and opens the associated menu.
+    /// </summary>
+    /// <param name="other"></param>
+    public virtual void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            IsIn = true;
+            TextToInteract.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Checks if a player leaves the zone and closes the associated menu.
+    /// </summary>
+    /// <param name="other"></param>
+    public virtual void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            IsIn = false;
+            TextToInteract.SetActive(false);
             _canvaZone.SetActive(false);
             _mouseLook.OnEnable();
         }

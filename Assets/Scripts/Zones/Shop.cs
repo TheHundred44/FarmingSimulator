@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Shop : ActionZone
+﻿public class Shop : ActionZone
 {
-    
+    // Opportunity to have unique things in this area.
 }

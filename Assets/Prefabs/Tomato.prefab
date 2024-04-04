@@ -15,11 +15,9 @@ GameObject:
   - component: {fileID: 279269946521748321}
   - component: {fileID: 3138321038414450551}
   - component: {fileID: 6909315840092931760}
-  - component: {fileID: 432529779591397258}
-  - component: {fileID: 3668235930199931983}
   m_Layer: 0
   m_Name: Tomato
-  m_TagString: Untagged
+  m_TagString: Tomate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  - {fileID: 2100000, guid: 4d8f5ac1092579c40831e6981ba71e61, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,9 +123,9 @@ MonoBehaviour:
   SeedScriptableObject: {fileID: 11400000, guid: 55494803a6b3fab46bccdf24bd8d261f,
     type: 2}
   SeedBusiness: {fileID: 3138321038414450551}
-  SeedPlant: {fileID: 3668235930199931983}
+  SeedPlant: {fileID: 0}
   SeedGrown: {fileID: 6909315840092931760}
-  SeedPick: {fileID: 432529779591397258}
+  SeedPick: {fileID: 0}
   IsGrown: 0
 --- !u!114 &3138321038414450551
 MonoBehaviour:
@@ -142,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _seed: {fileID: 0}
+  InventorySlot1: {fileID: 0}
 --- !u!114 &6909315840092931760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,27 +154,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _remainingTimeText: {fileID: 0}
---- !u!114 &432529779591397258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3074849000501198065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32fb9c92d8cb9414d8b5abdcff3590e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3668235930199931983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3074849000501198065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e1b1820ed23714b95ce4f533275b6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

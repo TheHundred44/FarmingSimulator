@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
@@ -26,6 +23,9 @@ public class MouseLook : MonoBehaviour
         Look();
     }
 
+    /// <summary>
+    /// Use the mouse to control the camera around the player, moving the character's body at the same time.
+    /// </summary>
     private void Look()
     {
         _mouseLook = _inputActions.Player.Look.ReadValue<Vector2>();
@@ -40,12 +40,18 @@ public class MouseLook : MonoBehaviour
         _playerBody.Rotate(Vector3.up * mouseX);
     }
 
+    /// <summary>
+    /// Activates the camera inputs and locks the cursor in the center of the screen.
+    /// </summary>
     public void OnEnable()
     {
         _inputActions.Enable();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    /// <summary>
+    /// Disables camera inputs and unlocks the cursor in the center of the screen.
+    /// </summary>
     public void OnDisable()
     {
         _inputActions.Disable();

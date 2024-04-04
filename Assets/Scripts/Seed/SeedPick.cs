@@ -1,15 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 public class SeedPick : MonoBehaviour
 {
-    public ScriptableObject scriptableObject;
+    private SeedMain _seedMain;
 
+    public GameObject InventorySlot1;
+    private SeedInventory _seedOfInventory;
+
+    public event Action OnTextNbOfPlant;
+
+    /// <summary>
+    /// Recovers the plant that has grown and adds it to the inventory.
+    /// </summary>
     public void Pick()
     {
-        
-        //InventorySystem.current.Add(scriptableObject);
-        Destroy(gameObject);
+        _seedMain = FindObjectOfType<SeedMain>().GetComponent<SeedMain>();
+
+        _seedOfInventory = InventorySlot1.GetComponent<SeedInventory>();
+        _seedOfInventory.NbOfPlant += 1;
+        OnTextNbOfPlant?.Invoke();
+
+        _seedMain.IsGrown = false;
+        _seedMain.SeedPlant.Garden.IsPlant = false;
+        _seedMain.SeedPlant.Garden.ActiveMenu();
+        _seedMain.SeedPlant.DestroyPlant();
     }
 }
